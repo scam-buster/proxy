@@ -72,8 +72,9 @@ export const onWaitTransactionCallback = async (
             ].sort((a, b) => b.occurredAt - a.occurredAt)
           );
           notifyStatus = 'free';
-          resolve('ng');
           clearTimeout(tid);
+          contractAddr = undefined;
+          resolve('ng');
         } else if (notifyStatus === 'ok') {
           store.set(
             'transactions',
@@ -88,8 +89,9 @@ export const onWaitTransactionCallback = async (
             ].sort((a, b) => b.occurredAt - a.occurredAt)
           );
           notifyStatus = 'free';
-          resolve('ok');
+          contractAddr = undefined;
           clearTimeout(tid);
+          resolve('ok');
         }
       }
     }, 1000);
